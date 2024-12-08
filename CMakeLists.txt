@@ -26,6 +26,7 @@ add_library("${Target}" STATIC
             include/${Target}++/actions.h
             include/${Target}++/cmdargs.h       src/cmdargs.cc
             include/${Target}++/sscan.h         src/sscan.cc
+            include/${Target}++/expect.h
             # # --------- LEXER:
             include/${Target}++/lexer/lexer_types.h     src/lexer/lexer_types.cc
             include/${Target}++/lexer/token_data.h      src/lexer/token_data.cc
@@ -38,22 +39,22 @@ add_library("${Target}" STATIC
             include/${Target}++/est/bloc.h          src/est/bloc.cc
             include/${Target}++/est/expression.h    src/est/expression.cc
             # # --------- TUI :
-            # include/${Target}++/tui/terminal.h cc/tui/terminal.cc
-            # include/${Target}++/tui/vchar.h cc/tui/terminal.vchar.cc
-            # include/${Target}++/tui/events.h cc/tui/events.cc
-            # include/${Target}++/tui/application.h cc/tui/application.cc
-            # include/${Target}++/tui/widget.h cc/tui/widget.cc cc/tui/widget_painter.cc
-            # include/${Target}++/tui/widgets/label.h cc/tui/widgets/label.cc
-            # include/${Target}++/tui/widgets/icon.h cc/tui/widgets/icon.cc
-            # include/${Target}++/tui/widgets/window.h cc/tui/widgets/window.cc
-            # include/${Target}++/tui/widgets/screen.h cc/tui/widgets/screen.cc
-            # include/${Target}++/tui/widgets/status_bar.h cc/tui/widgets/status_bar.cc
-            # include/${Target}++/tui/widgets/input_track.h cc/tui/widgets/input_track.cc
-            # include/${Target}++/tui/io/ansi_colours_parser.h cc/tui/io/ansi_colours_parser.cc
-            # include/${Target}++/tui/io/ansi_parser.h cc/tui/io/ansi_parser.cc
-            # include/${Target}++/tui/io/polling.h cc/tui/io/polling.cc
-            # include/${Target}++/tui/tuxns.h cc/tui/tuxns.cc
-            # include/${Target}++/tools/expect.h
+            include/${Target}++/tui/terminal.h src/tui/terminal.cc
+            include/${Target}++/tui/vchar.h src/tui/terminal.vchar.cc
+            include/${Target}++/tui/events.h src/tui/events.cc
+            include/${Target}++/tui/application.h src/tui/application.cc
+            include/${Target}++/tui/widget.h src/tui/widget.cc src/tui/widget_painter.cc
+            include/${Target}++/tui/widgets/label.h src/tui/widgets/label.cc
+            include/${Target}++/tui/widgets/icon.h src/tui/widgets/icon.cc
+            include/${Target}++/tui/widgets/window.h src/tui/widgets/window.cc
+            include/${Target}++/tui/widgets/screen.h src/tui/widgets/screen.cc
+            include/${Target}++/tui/widgets/status_bar.h src/tui/widgets/status_bar.cc
+            include/${Target}++/tui/widgets/input_track.h src/tui/widgets/input_track.cc
+            include/${Target}++/tui/io/ansi_colours_parser.h src/tui/io/ansi_colours_parser.cc
+            include/${Target}++/tui/io/ansi_parser.h src/tui/io/ansi_parser.cc
+            include/${Target}++/tui/io/polling.h src/tui/io/polling.cc
+            include/${Target}++/tui/tuxns.h             src/tui/tuxns.cc
+            
 )
 
 
