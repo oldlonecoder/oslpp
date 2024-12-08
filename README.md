@@ -1,5 +1,5 @@
 
-# osl++ project ( Formely Old Serge Lussier ++)
+# osl++ project ( Formally: Old Serge Lussier library... and not "Open Source Libraries"...)
 
 # Roadmap of this hobby project
 
@@ -80,4 +80,4 @@
 
 * Unless otherwise specified, all code in this project is written by the author (Serge oslsier)  and no one else (...unless otherwise specified...).
 ---
-copyrights ...,2025,... Serge oslsier
+copyrights ...,2025,... Serge Lussier
