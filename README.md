@@ -5,14 +5,13 @@
 
 ### Exploring, Learning and write a set of C++ framework of (from my own) libraries/ or a single big static lib
 
-## tools support classes
+## core support classes ( namespace osl ) main directory( for ex.: #include <osl++/string.h>)
 
----
     - [class osl::string]
         Composite std::string accumulator for serializing and formatting supported components
     - [osl::color]
-        text attr obj and colors [mnemonics] conversion util.
-    - [rem :  application journal logger, and global return mnemonics enumeration system]
+        Ansi (and future HTML) colours mnemonics.
+    - [rem :  Coherant and consistent Global Return Codes Mnemonics and Enumerations]
         messages and logs.
         Note:   The osl::rem class is the kernel of the later/projected logger book API
     - [class osl::signals::action; osl::signals::signal ]
@@ -26,18 +25,21 @@
         Base Object class on the parent-child relational logistic ( smart-pointers not used there. Too much overload (yet?) )
     -[class  osl::glyph and  osl::accent_fr]
         Actually, some hardcoded unicode and french accent glyphes. Waiting to find a coherant and definitive unicode API.
-    -------------------------------------------------------------------------------------------------------------------
     -[ osl::cmd::cmd_switch osl::cmd::line,  with notify-hook]
         Developping my own command-line arguments processor.
         -> It is very hard to create a coherent logistic-model. POSIX or not, the syntax is a mess because there is NO real strict format rules.
-    -------------------------------------------------------------------------------------------------------------------
-***
-
-***
-
-## tui : (osl::ui):  Standard Ansi Console UI using ...Standard Ansi Codes
-
+    
 ---
+
+## rem : (namespace rem) Return Enumeration Mnemonics
+    - Consistent and Coherant Global Enumeration Mnemonics system.
+---
+
+## est : (namespace osl::est) Expression SyntaxTree
+    - Mathematical Expression Parser and Compiler.
+---
+
+## tui : (namespace osl::ui): Standard Ansi Console UI using ...Standard Ansi Codes
     -[namespace osl::terminal]
         Related console/terminal for init, config and finish
     -[class osl::terminal::vchar ]
@@ -58,11 +60,10 @@
 * tui is an Application TUI API using elements (Widgets) on the console for its user interface.
 * tui is Not a fast UI renderer especially on Microsoft Windows Terminal where it is very,very, v-e-r-y slow.
 
-***
+---
 
 ## dlapi : Basic support for dynamic dll/so components (future) library loader
 
----
     Very basic plugins like support manager. [not started yet]
     -[class osl::dlapi]
         File-level handling of object; Shared-object/dll/dylib contents loader.
@@ -71,14 +72,12 @@
 
     Since there is absolutely NO framework logistic at all (such as Windows/COM;OLE, Qt,KDE, [IOS/OSX]:Cocoa ), osl::dlapi must be implemented in higher derived implementation using std::function, lambdas and variadic template/ params.
     Maybe there will be a kind of plugin framework implemented in the osl .. Stay tuned ...:)
-***
+---
 
 ## todo
-
----
     ... lots todo! 
 ---
 
 * Unless otherwise specified, all code in this project is written by the author (Serge oslsier)  and no one else (...unless otherwise specified...).
-
+---
 copyrights ...,2025,... Serge oslsier
