@@ -6,6 +6,8 @@
 namespace tux
 {
 
+using ui::color;
+
 std::vector<accent_fr::T> accent_fr::data =
     {
         L_agrave,

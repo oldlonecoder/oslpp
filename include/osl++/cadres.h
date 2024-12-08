@@ -29,7 +29,7 @@ namespace tux
 {
 
 using namespace integers;
-
+using ui::color;
 struct OSL_API cadre
 {
     color::pair colors;     ///< colours of the box::frame

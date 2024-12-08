@@ -35,6 +35,7 @@
 namespace tux
 {
 
+using ui::color;
 /*!
  *  https://www.ditig.com/publications/256-colors-cheat-sheet
  */

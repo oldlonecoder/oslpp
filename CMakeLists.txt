@@ -27,16 +27,16 @@ add_library("${Target}" STATIC
             include/${Target}++/cmdargs.h       src/cmdargs.cc
             include/${Target}++/sscan.h         src/sscan.cc
             # # --------- LEXER:
-            # include/${Target}++/lexer/lexer_types.h cc/lexer/lexer_types.cc
-            # include/${Target}++/lexer/token_data.h cc/lexer/token_data.cc
-            # include/${Target}++/lexer/tokens_table.h cc/lexer/tokens_table.cc
-            # include/${Target}++/lexer/lexer.h cc/lexer/lexer.cc
+            include/${Target}++/lexer/lexer_types.h     src/lexer/lexer_types.cc
+            include/${Target}++/lexer/token_data.h      src/lexer/token_data.cc
+            include/${Target}++/lexer/tokens_table.h    src/lexer/tokens_table.cc
+            include/${Target}++/lexer/lexer.h           src/lexer/lexer.cc
             # # --------- EST : { Expression Syntax Tree }
-            # include/${Target}++/est/alu.h cc/est/alu.cc
-            # include/${Target}++/est/node.h cc/est/node.cc
-            # include/${Target}++/est/variable.h cc/est/variable.cc
-            # include/${Target}++/est/bloc.h cc/est/bloc.cc
-            # include/${Target}++/est/expression.h cc/est/expression.cc
+            include/${Target}++/est/alu.h           src/est/alu.cc
+            include/${Target}++/est/node.h          src/est/node.cc
+            include/${Target}++/est/variable.h      src/est/variable.cc
+            include/${Target}++/est/bloc.h          src/est/bloc.cc
+            include/${Target}++/est/expression.h    src/est/expression.cc
             # # --------- TUI :
             # include/${Target}++/tui/terminal.h cc/tui/terminal.cc
             # include/${Target}++/tui/vchar.h cc/tui/terminal.vchar.cc

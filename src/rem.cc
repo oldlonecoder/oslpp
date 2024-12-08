@@ -4,7 +4,7 @@
 
 //#include <vector>
 
-using tux::color;
+using tux::ui::color;
 using tux::glyph;
 using tux::accent_fr;
 
