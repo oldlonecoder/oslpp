@@ -18,7 +18,7 @@
 #include <functional>
 
 
-namespace osl
+namespace tux
 {
 
 using namespace integers;

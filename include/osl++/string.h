@@ -39,7 +39,7 @@
 #include <chrono>
 #include <stack>
 
-namespace osl
+namespace tux
 {
 
 using namespace integers;
@@ -199,7 +199,7 @@ public:
     static std::string bytes(std::vector<int> a_seq);
 
     static std::vector<std::string_view> string_view_list(int Count, char **s);
-    //static osl::string::list make_list(int argc, char** argv);
+    //static tux::string::list make_list(int argc, char** argv);
 };
 
 

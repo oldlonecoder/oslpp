@@ -3,7 +3,7 @@
 #include <map>
 
 
-namespace osl
+namespace tux
 {
 
 std::vector<accent_fr::T> accent_fr::data =
@@ -368,95 +368,95 @@ std::map<glyph::type, std::string> glyph_dict =
 
 static glyph::type last_glyph_index = glyph::sqpixel;
 
-std::map<rem::type, std::pair<osl::glyph::type, color::pair>> types_database={
+std::map<rem::type, std::pair<tux::glyph::type, color::pair>> types_database={
 
-    {rem::type::none,        {osl::glyph::computer,  {color::aquamarine1         , color::reset }}},
-    {rem::type::err,         {osl::glyph::err1,      {color::red4                , color::reset }}},
-    {rem::type::warning,     {osl::glyph::warning,   {color::yellow              , color::reset }}},
-    {rem::type::fatal,       {osl::glyph::dead_head, {color::hotpink4            , color::reset }}},
-    {rem::type::except,      {osl::glyph::bolt,      {color::skyblue3            , color::reset }}},
-    {rem::type::message,     {osl::glyph::comment,   {color::green4              , color::reset }}},
-    {rem::type::output,      {osl::glyph::notepad,   {color::grey39              , color::reset }}},
-    {rem::type::debug,       {osl::glyph::bug,       {color::pink3               , color::reset }}},
-    {rem::type::info,        {osl::glyph::info,      {color::lightskyblue4       , color::reset }}},
-    {rem::type::comment,     {osl::glyph::comment,   {color::grey42              , color::reset }}},
-    {rem::type::syntax,      {osl::glyph::handwrite, {color::lighcoreateblue     , color::reset }}},
-    {rem::type::status,      {osl::glyph::admin,     {color::lightcyan3          , color::reset }}},
-    {rem::type::test,        {osl::glyph::file,      {color::aquamarine3         , color::reset }}},
-    {rem::type::interrupted, {osl::glyph::circle_x,  {color::khaki3              , color::reset }}},
-    {rem::type::aborted,     {osl::glyph::stop,      {color::red4                , color::reset }}},
-    {rem::type::segfault,    {osl::glyph::bomb,      {color::sandybrown          , color::reset }}},
-    {rem::type::log,         {osl::glyph::log,       {color::orangered1          , color::reset }}}
+    {rem::type::none,        {tux::glyph::computer,  {color::aquamarine1         , color::reset }}},
+    {rem::type::err,         {tux::glyph::err1,      {color::red4                , color::reset }}},
+    {rem::type::warning,     {tux::glyph::warning,   {color::yellow              , color::reset }}},
+    {rem::type::fatal,       {tux::glyph::dead_head, {color::hotpink4            , color::reset }}},
+    {rem::type::except,      {tux::glyph::bolt,      {color::skyblue3            , color::reset }}},
+    {rem::type::message,     {tux::glyph::comment,   {color::green4              , color::reset }}},
+    {rem::type::output,      {tux::glyph::notepad,   {color::grey39              , color::reset }}},
+    {rem::type::debug,       {tux::glyph::bug,       {color::pink3               , color::reset }}},
+    {rem::type::info,        {tux::glyph::info,      {color::lightskyblue4       , color::reset }}},
+    {rem::type::comment,     {tux::glyph::comment,   {color::grey42              , color::reset }}},
+    {rem::type::syntax,      {tux::glyph::handwrite, {color::lighcoreateblue     , color::reset }}},
+    {rem::type::status,      {tux::glyph::admin,     {color::lightcyan3          , color::reset }}},
+    {rem::type::test,        {tux::glyph::file,      {color::aquamarine3         , color::reset }}},
+    {rem::type::interrupted, {tux::glyph::circle_x,  {color::khaki3              , color::reset }}},
+    {rem::type::aborted,     {tux::glyph::stop,      {color::red4                , color::reset }}},
+    {rem::type::segfault,    {tux::glyph::bomb,      {color::sandybrown          , color::reset }}},
+    {rem::type::log,         {tux::glyph::log,       {color::orangered1          , color::reset }}}
     //...
 };
 
 
-std::map<rem::action      , std::pair<osl::glyph::type, color::pair>> actions_color_db = {
-    {rem::action::enter   , {osl::glyph::enter        , {color::white               , color::reset}}},
-    {rem::action::leave   , {osl::glyph::file         , {color::white               , color::reset}}},
-    {rem::action::begin   , {osl::glyph::chronos      , {color::white               , color::reset}}},
-    {rem::action::end     , {osl::glyph::dead_head    , {color::white               , color::reset}}},
-    {rem::action::commit  , {osl::glyph::pencil_dr    , {color::white               , color::reset}}},
-    {rem::action::continu , {osl::glyph::success      , {color::white               , color::reset}}},
-       {rem::action::dismiss , {osl::glyph::arrow_dhead_right , {color::yellow         , color::reset}}},
+std::map<rem::action      , std::pair<tux::glyph::type, color::pair>> actions_color_db = {
+    {rem::action::enter   , {tux::glyph::enter        , {color::white               , color::reset}}},
+    {rem::action::leave   , {tux::glyph::file         , {color::white               , color::reset}}},
+    {rem::action::begin   , {tux::glyph::chronos      , {color::white               , color::reset}}},
+    {rem::action::end     , {tux::glyph::dead_head    , {color::white               , color::reset}}},
+    {rem::action::commit  , {tux::glyph::pencil_dr    , {color::white               , color::reset}}},
+    {rem::action::continu , {tux::glyph::success      , {color::white               , color::reset}}},
+       {rem::action::dismiss , {tux::glyph::arrow_dhead_right , {color::yellow         , color::reset}}},
 };
 
-std::map<rem::code, std::pair<osl::glyph::type, color::pair>> codes_database={
-    {rem::code::ok,              {osl::glyph::thumb_up,        {color::lime              ,color::reset }}},
-    {rem::code::accepted,        {osl::glyph::thumb_up,        {color::lime              ,color::reset }}},
-    {rem::code::success,         {osl::glyph::success,         {color::darkgreen         ,color::reset }}},
-    {rem::code::rejected,        {osl::glyph::thumb_down,      {color::hotpink4          ,color::reset }}},
-    {rem::code::failed,          {osl::glyph::poop,            {color::darkgoldenrod     ,color::reset }}},
-    {rem::code::empty,           {osl::glyph::arrowright,      {color::lighcoreategrey   ,color::reset }}},
-    {rem::code::full,            {osl::glyph::small_dot,       {color::white             ,color::reset }}},
-    {rem::code::notempty,        {osl::glyph::big_dot,         {color::white             ,color::reset }}},
-    {rem::code::implemented,     {osl::glyph::arrow_head_right,{color::lime              ,color::reset }}},
-    {rem::code::notimplemented,  {osl::glyph::err1,            {color::orange3           ,color::reset }}},
-    {rem::code::untested,        {osl::glyph::flag,            {color::yellow            ,color::reset }}},
-    {rem::code::eof,             {osl::glyph::baseline,        {color::white             ,color::reset }}},
-    {rem::code::eos,             {osl::glyph::baseline,        {color::white             ,color::reset }}},
-    {rem::code::null_ptr,        {osl::glyph::circle_x,        {color::hotpink4            ,color::reset }}},
-    {rem::code::notexist  ,      {osl::glyph::circle_x ,       {color::white               ,color::reset }}},
-    {rem::code::exist     ,      {osl::glyph::star5 ,          {color::white             ,color::reset }}},
-    {rem::code::unexpected,      {osl::glyph::flag ,           {color::yellow            ,color::reset }}},
-    {rem::code::expected  ,      {osl::glyph::cat ,            {color::white             ,color::reset }}},
-    {rem::code::blocked   ,      {osl::glyph::unauth ,         {color::indianred3        ,color::reset }}},
-    {rem::code::locked    ,      {osl::glyph::err3 ,           {color::white             ,color::reset }}},
-    {rem::code::overflow  ,      {osl::glyph::dead_head,       {color::red4              ,color::reset }}},
-    {rem::code::oob       ,      {osl::glyph::alien,           {color::lightcoral        ,color::reset }}},
-    {rem::code::reimplement,     {osl::glyph::log,             {color::yellow            ,color::reset }}},
-    {rem::code::done       ,     {osl::glyph::ok,              {color::yellow            ,color::reset }}},
-    {rem::code::complete   ,     {osl::glyph::ok,              {color::yellow            ,color::reset }}},
-    {rem::code::finish     ,     {osl::glyph::ok,              {color::lime              ,color::reset }}},
-    {rem::code::undefined  ,     {osl::glyph::err3,            {color::red               ,color::reset }}},
-    {rem::code::ready      ,     {osl::glyph::ok,              {color::lime              ,color::reset }}},
-    {rem::code::terminate  ,     {osl::glyph::flag,            {color::hotpink4          ,color::reset }}},
-    {rem::code::timeout    ,     {osl::glyph::chronos,         {color::lime              ,color::reset }}},
-    {rem::code::divbyzero  ,     {osl::glyph::circle_x,        {color::red4                ,color::reset }}},
-    {rem::code::notvisible ,     {osl::glyph::circle_x,        {color::yellow              ,color::reset }}},
-    {rem::code::cancel     ,     {osl::glyph::circle_x,        {color::red4                ,color::reset }}},
-    {rem::code::object_ptr ,     {osl::glyph::edit_pencil_br,{color::lightsteelblue3     ,color::reset }}},
-    {rem::code::object_id ,      {osl::glyph::arrowright,      {color::yellow            ,color::reset }}},
+std::map<rem::code, std::pair<tux::glyph::type, color::pair>> codes_database={
+    {rem::code::ok,              {tux::glyph::thumb_up,        {color::lime              ,color::reset }}},
+    {rem::code::accepted,        {tux::glyph::thumb_up,        {color::lime              ,color::reset }}},
+    {rem::code::success,         {tux::glyph::success,         {color::darkgreen         ,color::reset }}},
+    {rem::code::rejected,        {tux::glyph::thumb_down,      {color::hotpink4          ,color::reset }}},
+    {rem::code::failed,          {tux::glyph::poop,            {color::darkgoldenrod     ,color::reset }}},
+    {rem::code::empty,           {tux::glyph::arrowright,      {color::lighcoreategrey   ,color::reset }}},
+    {rem::code::full,            {tux::glyph::small_dot,       {color::white             ,color::reset }}},
+    {rem::code::notempty,        {tux::glyph::big_dot,         {color::white             ,color::reset }}},
+    {rem::code::implemented,     {tux::glyph::arrow_head_right,{color::lime              ,color::reset }}},
+    {rem::code::notimplemented,  {tux::glyph::err1,            {color::orange3           ,color::reset }}},
+    {rem::code::untested,        {tux::glyph::flag,            {color::yellow            ,color::reset }}},
+    {rem::code::eof,             {tux::glyph::baseline,        {color::white             ,color::reset }}},
+    {rem::code::eos,             {tux::glyph::baseline,        {color::white             ,color::reset }}},
+    {rem::code::null_ptr,        {tux::glyph::circle_x,        {color::hotpink4            ,color::reset }}},
+    {rem::code::notexist  ,      {tux::glyph::circle_x ,       {color::white               ,color::reset }}},
+    {rem::code::exist     ,      {tux::glyph::star5 ,          {color::white             ,color::reset }}},
+    {rem::code::unexpected,      {tux::glyph::flag ,           {color::yellow            ,color::reset }}},
+    {rem::code::expected  ,      {tux::glyph::cat ,            {color::white             ,color::reset }}},
+    {rem::code::blocked   ,      {tux::glyph::unauth ,         {color::indianred3        ,color::reset }}},
+    {rem::code::locked    ,      {tux::glyph::err3 ,           {color::white             ,color::reset }}},
+    {rem::code::overflow  ,      {tux::glyph::dead_head,       {color::red4              ,color::reset }}},
+    {rem::code::oob       ,      {tux::glyph::alien,           {color::lightcoral        ,color::reset }}},
+    {rem::code::reimplement,     {tux::glyph::log,             {color::yellow            ,color::reset }}},
+    {rem::code::done       ,     {tux::glyph::ok,              {color::yellow            ,color::reset }}},
+    {rem::code::complete   ,     {tux::glyph::ok,              {color::yellow            ,color::reset }}},
+    {rem::code::finish     ,     {tux::glyph::ok,              {color::lime              ,color::reset }}},
+    {rem::code::undefined  ,     {tux::glyph::err3,            {color::red               ,color::reset }}},
+    {rem::code::ready      ,     {tux::glyph::ok,              {color::lime              ,color::reset }}},
+    {rem::code::terminate  ,     {tux::glyph::flag,            {color::hotpink4          ,color::reset }}},
+    {rem::code::timeout    ,     {tux::glyph::chronos,         {color::lime              ,color::reset }}},
+    {rem::code::divbyzero  ,     {tux::glyph::circle_x,        {color::red4                ,color::reset }}},
+    {rem::code::notvisible ,     {tux::glyph::circle_x,        {color::yellow              ,color::reset }}},
+    {rem::code::cancel     ,     {tux::glyph::circle_x,        {color::red4                ,color::reset }}},
+    {rem::code::object_ptr ,     {tux::glyph::edit_pencil_br,{color::lightsteelblue3     ,color::reset }}},
+    {rem::code::object_id ,      {tux::glyph::arrowright,      {color::yellow            ,color::reset }}},
 
 };
 
 
-std::map<rem::fn, std::pair<osl::glyph::type, color::pair>> functions_database={
+std::map<rem::fn, std::pair<tux::glyph::type, color::pair>> functions_database={
 
-    {rem::fn::stamp     ,      {osl::glyph::chronos  ,   {color::skyblue3          ,color::reset }}},
-    {rem::fn::func      ,      {osl::glyph::function ,   {color::skyblue3          ,color::reset }}},
-    {rem::fn::file      ,      {osl::glyph::file     ,   {color::lightcyan3        ,color::reset }}},
-    {rem::fn::line      ,      {osl::glyph::baseline ,   {color::lime              ,color::reset }}},
-    {rem::fn::stamp     ,      {osl::glyph::chronos  ,   {color::yellow            ,color::reset }}},
-    {rem::fn::hour      ,      {osl::glyph::chronos  ,   {color::white             ,color::reset }}},
-    {rem::fn::minute    ,      {osl::glyph::chronos  ,   {color::white             ,color::reset }}},
-    {rem::fn::seconds   ,      {osl::glyph::chronos  ,   {color::white             ,color::reset }}},
-    {rem::fn::weekday   ,      {osl::glyph::fabric   ,   {color::yellow            ,color::reset }}},
-    {rem::fn::month     ,      {osl::glyph::chronos  ,   {color::white             ,color::reset }}},
-    {rem::fn::dayname   ,      {osl::glyph::star5    ,   {color::white             ,color::reset }}},
-    {rem::fn::day       ,      {osl::glyph::star5    ,   {color::white             ,color::reset }}},
-    {rem::fn::monthnum  ,      {osl::glyph::star5    ,   {color::white             ,color::reset }}},
-    {rem::fn::year      ,      {osl::glyph::star5    ,   {color::white             ,color::reset }}}
+    {rem::fn::stamp     ,      {tux::glyph::chronos  ,   {color::skyblue3          ,color::reset }}},
+    {rem::fn::func      ,      {tux::glyph::function ,   {color::skyblue3          ,color::reset }}},
+    {rem::fn::file      ,      {tux::glyph::file     ,   {color::lightcyan3        ,color::reset }}},
+    {rem::fn::line      ,      {tux::glyph::baseline ,   {color::lime              ,color::reset }}},
+    {rem::fn::stamp     ,      {tux::glyph::chronos  ,   {color::yellow            ,color::reset }}},
+    {rem::fn::hour      ,      {tux::glyph::chronos  ,   {color::white             ,color::reset }}},
+    {rem::fn::minute    ,      {tux::glyph::chronos  ,   {color::white             ,color::reset }}},
+    {rem::fn::seconds   ,      {tux::glyph::chronos  ,   {color::white             ,color::reset }}},
+    {rem::fn::weekday   ,      {tux::glyph::fabric   ,   {color::yellow            ,color::reset }}},
+    {rem::fn::month     ,      {tux::glyph::chronos  ,   {color::white             ,color::reset }}},
+    {rem::fn::dayname   ,      {tux::glyph::star5    ,   {color::white             ,color::reset }}},
+    {rem::fn::day       ,      {tux::glyph::star5    ,   {color::white             ,color::reset }}},
+    {rem::fn::monthnum  ,      {tux::glyph::star5    ,   {color::white             ,color::reset }}},
+    {rem::fn::year      ,      {tux::glyph::star5    ,   {color::white             ,color::reset }}}
 
 };
 
@@ -489,22 +489,22 @@ std::string glyph::name(type gh)
 
 }
 
-std::pair<osl::glyph::type, osl::color::pair> rem::type_attributes(rem::type ty)
+std::pair<tux::glyph::type, tux::color::pair> rem::type_attributes(rem::type ty)
 {
     return types_database[ty];
 }
 
-std::pair<osl::glyph::type, osl::color::pair> rem::return_code_attributes(rem::code cod)
+std::pair<tux::glyph::type, tux::color::pair> rem::return_code_attributes(rem::code cod)
 {
     return codes_database[cod];
 }
 
-std::pair<osl::glyph::type, osl::color::pair> rem::function_attributes(rem::fn fn)
+std::pair<tux::glyph::type, tux::color::pair> rem::function_attributes(rem::fn fn)
 {
     return functions_database[fn];
 }
 
-std::pair<osl::glyph::type, osl::color::pair> rem::action_attributes(rem::action a)
+std::pair<tux::glyph::type, tux::color::pair> rem::action_attributes(rem::action a)
 {
     return actions_color_db[a];
 }

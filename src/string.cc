@@ -26,7 +26,7 @@
 #define out std::cout
 #define lend std::endl;
 
-namespace osl
+namespace tux
 {
 
 

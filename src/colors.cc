@@ -32,7 +32,7 @@
 #include <map>
 
 
-namespace osl
+namespace tux
 {
 
 /*!

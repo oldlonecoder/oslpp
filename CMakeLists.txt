@@ -20,12 +20,12 @@ add_library("${Target}" STATIC
             include/${Target}++/glyphes.h       src/glyphes.cc
             include/${Target}++/cadres.h        src/cadres.cc
             include/${Target}++/string.h        src/string.cc
-            # include/${Target}++/logger.h cc/tools/logger.cc
+            include/${Target}++/journal/logger.h src/journal/logger.cc
             include/${Target}++/object.h        src/object.cc
-            # include/${Target}++/geometry.h cc/tools/geometry.cc
-            # include/${Target}++/actions.h
-            # include/${Target}++/cmdargs.h cc/tools/cmdargs.cc
-            # include/${Target}++/sscan.h cc/tools/sscan.cc
+            include/${Target}++/geometry.h      src/geometry.cc
+            include/${Target}++/actions.h
+            include/${Target}++/cmdargs.h       src/cmdargs.cc
+            include/${Target}++/sscan.h         src/sscan.cc
             # # --------- LEXER:
             # include/${Target}++/lexer/lexer_types.h cc/lexer/lexer_types.cc
             # include/${Target}++/lexer/token_data.h cc/lexer/token_data.cc

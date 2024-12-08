@@ -21,7 +21,7 @@
 #include <string>
 
 
- namespace osl
+ namespace tux
  {
 
 struct OSL_API color {

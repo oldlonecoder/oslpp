@@ -25,7 +25,7 @@
 #include <osl++/colors.h>
 #include <osl++/glyphes.h>
 
-namespace osl
+namespace tux
 {
 
 using namespace integers;

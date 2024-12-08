@@ -4,9 +4,9 @@
 
 //#include <vector>
 
-using osl::color;
-using osl::glyph;
-using osl::accent_fr;
+using tux::color;
+using tux::glyph;
+using tux::accent_fr;
 
 bool operator !(rem::code c)
 {

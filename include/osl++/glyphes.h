@@ -20,7 +20,7 @@
 #include <string>
 #include <string_view>
 
-namespace osl
+namespace tux
 {
 
 struct OSL_API glyph
@@ -463,9 +463,9 @@ struct OSL_API accent_fr
 
 namespace rem
 {
-    std::pair<osl::glyph::type, osl::color::pair> type_attributes(rem::type ty);
-    std::pair<osl::glyph::type, color::pair> return_code_attributes(rem::code cod);
-    std::pair<osl::glyph::type, color::pair> function_attributes(rem::fn fn);
-    std::pair<osl::glyph::type, color::pair> action_attributes(rem::action a);
+    std::pair<tux::glyph::type, tux::color::pair> type_attributes(rem::type ty);
+    std::pair<tux::glyph::type, color::pair> return_code_attributes(rem::code cod);
+    std::pair<tux::glyph::type, color::pair> function_attributes(rem::fn fn);
+    std::pair<tux::glyph::type, color::pair> action_attributes(rem::action a);
 
 }

@@ -91,7 +91,7 @@ private:
 
 //----------------------------------------------------------------------------
 
-namespace osl
+namespace tux
 {
 namespace integers
 {
@@ -120,7 +120,7 @@ using u_reg  = uint64_t;
 
 namespace rem  // Remark /-or [Global] Return Enumeration Mnemonics
 {
-using namespace osl;
+using namespace tux;
 
 enum class type : integers::U8{
     none, err, warning, fatal, except, message, output, debug, info, comment, syntax, status, test, interrupted, aborted, segfault, log

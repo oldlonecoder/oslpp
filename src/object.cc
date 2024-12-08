@@ -17,7 +17,7 @@
 #include <osl++/glyphes.h>
 #include <osl++/string.h>
 
-namespace osl
+namespace tux
 {
 
 object::object(object *ParentObj, const std::string &ObjID):
@@ -86,7 +86,7 @@ void object::append_child(object *o)
 
 std::string object::pretty_id() const
 {
-    osl::string text;
+    tux::string text;
 
     auto [gh,colors] = rem::return_code_attributes(rem::code::object_ptr);
     text
