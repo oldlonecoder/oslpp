@@ -11,7 +11,7 @@
         Composite std::string accumulator for serializing and formatting supported components
     - [tux::color]
         Ansi (and future HTML) colours mnemonics.
-    - [rem :  Coherant and consistent Global Return Codes Mnemonics and Enumerations]
+    - [rem :  Coherant and consistent Global Return Code Mnemonics enumeration]
         messages and logs.
         Note:   The tux::rem class is the kernel of the later/projected logger book API
     - [class tux::signals::action; tux::signals::signal ]
@@ -53,7 +53,7 @@
 
 ### Note
 
-* Backbuffer commits on console are converted to ansi256 (true color) ESC sequences for rendering the text and attributes.
+* The vchar::back_buffer commits on console are converted to ansi256 (true color) ESC sequences for rendering the text and attributes.
 * Not very compatible to non-graphical 16 colors raw tty terminals.
 * Management of the ui::widget/windows hierarchy is at application level, not at system level.
 * tui is NOT a text console processes/desktop/window manager despite I use it to manage one single application and its renderings
@@ -78,6 +78,6 @@
     ... lots todo! 
 ---
 
-* Unless otherwise specified, all code in this project is written by the author (Serge oslsier)  and no one else (...unless otherwise specified...).
+* Unless otherwise specified, all code in this project is written by the author (Serge Lussier)  and no one else (...unless otherwise specified...).
 ---
 copyrights ...,2025,... Serge Lussier

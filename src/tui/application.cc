@@ -152,7 +152,7 @@ rem::code application::start_events_listening()
     d->pollin_action().connect(this, &application::std_infile_no);
     d->activate();
 
-    // Blocking in this
+    // Blocking in the calling thread (Formally the main thread).
     return _polling.run();
 }
 
@@ -193,15 +193,16 @@ rem::code application::terminate()
 
 rem::action application::std_infile_no(ui::io::descriptor& _d)
 {
-    log::debug() << "tddv::std_input{" << tux::string::bytes(_d.buffer()) << "}" << log::eol;
+    log::debug() << "tux::application::std_input{" << tux::string::bytes(_d.buffer()) << "}" << log::eol;
     auto r = ui::io::ansi_parser{_d}.parse(_events_q.push());
     if (!r)
     {
-        log::error() << " ansi_parser returns" << r << " leaving and return to the stdin polling iteration..." << log::eol;
+        log::error() << " ansi_parser returns" << r << " leaving and returning to our stdin polling iteration..." << log::eol;
         return rem::action::continu;
     }
 
     log::debug() << " ansi_parser returned: " << r << log::eol;
+
     // auto& ev = *_events_q;
     // if (ev[ui::event::command_key])
     // {

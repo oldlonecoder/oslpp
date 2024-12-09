@@ -91,9 +91,8 @@ private:
 
 //----------------------------------------------------------------------------
 
-namespace tux
-{
-namespace integers
+
+namespace tux::integers
 {
 using Byte  = uint8_t;
 using I8    = int8_t;
@@ -116,17 +115,18 @@ using u32   = uint32_t;
 using i64   = int64_t;
 using u64   = uint64_t;
 using u_reg  = uint64_t;
-}}
+}
 
 namespace rem  // Remark /-or [Global] Return Enumeration Mnemonics
 {
-using namespace tux;
 
-enum class type : integers::U8{
+
+
+enum class type : tux::integers::U8{
     none, err, warning, fatal, except, message, output, debug, info, comment, syntax, status, test, interrupted, aborted, segfault, log
 };
 
-    enum class code : integers::U8
+    enum class code : tux::integers::U8
     {
         ok  =0           , ///< Obviously;
         accepted         ,
@@ -169,7 +169,7 @@ enum class type : integers::U8{
     };
 
 
-    enum class fn : integers::U8
+    enum class fn : tux::integers::U8
     {
         func             ,
         endl             , ///< End of line Code, input format
@@ -187,7 +187,7 @@ enum class type : integers::U8{
         year
     };
 
-    enum class action : integers::U8
+    enum class action : tux::integers::U8
     {
         enter            , ///< enter bloc or indent
         leave            , ///< End (logger: End of entry accumulators, so do commit); End of (sel)Section, Attribute ( auto-color::reset ) and unindent

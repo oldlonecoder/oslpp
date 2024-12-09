@@ -22,7 +22,7 @@
 
 #include <osl++/glyphes.h>
 #include <osl++/string.h>
-//#include "osl++/journal/enums.h"
+
 #include <source_location>
 
 #include <functional>
@@ -32,7 +32,7 @@
 
 
 
-using tux::color;
+using tux::ui::color;
 using tux::glyph;
 using tux::accent_fr;
 using tux::ui::rectangle;
@@ -42,6 +42,7 @@ using tux::ui::size;
 
 namespace tux
 {
+
 class object;
 
 class OSL_API log
@@ -216,7 +217,7 @@ public:
 
     log() = default;
     log(rem::type message, rem::code code, std::source_location src);
-    rem::type entry_type() const { return _type_; }
+    [[nodiscard]] rem::type entry_type() const { return _type_; }
 };
 
 
