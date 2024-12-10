@@ -244,6 +244,21 @@ bool string::eat(string::word& w)
 }
 
 
+std::string string::make_str(const tux::string::list& _list)
+{
+    std::string str="{";
+    int col=0;
+    for (auto const& c:_list)
+    {
+        if (col++)
+            str += ',';
+        str += c;
+    }
+    str += '}';
+    return str;
+}
+
+
 std::string string::now(const std::string& str_fmt)
 {
     // Old archaic Code...
@@ -301,4 +316,11 @@ std::vector<std::string_view> string::string_view_list(int Count, char** s)
     return result;
 }
 
+
+tux::string::list string::make_list(int argc, char** argv, int offset)
+{
+    std::vector<std::string> result;
+    for(int i = offset; i < argc; ++i) result.emplace_back(argv[i]);
+    return result;
+}
 } // tux

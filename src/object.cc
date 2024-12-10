@@ -17,6 +17,8 @@
 #include <osl++/glyphes.h>
 #include <osl++/string.h>
 
+#include <osl++/journal/logger.h>
+
 namespace tux
 {
 
@@ -29,6 +31,7 @@ object::object(object *ParentObj, const std::string &ObjID):
 
 object::~object()
 {
+    log::debug() << pretty_id() << ":" << log::eol;
     for(auto* o : m_children)
     {
         //log::info() << log::fn::func << " destroy ['" << std::format("{:^20s}", o->id()) << "'] @" << o;

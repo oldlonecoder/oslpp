@@ -160,6 +160,7 @@ private:
 
 public:
     static std::string make_str(const char *B, const char *E) { return {B, E}; }
+    static std::string make_str(const tux::string::list& _list);
     static std::string now(const std::string &str_fmt);
     bool empty() { return _d_.empty(); }
 
@@ -198,7 +199,7 @@ public:
     static std::string bytes(std::vector<int> a_seq);
 
     static std::vector<std::string_view> string_view_list(int Count, char **s);
-    //static tux::string::list make_list(int argc, char** argv);
+    static tux::string::list make_list(int argc, char** argv, int offset=0);
 };
 
 

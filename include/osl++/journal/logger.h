@@ -103,6 +103,7 @@ public:
     log& operator << (rem::code cod);
     log& operator << (rem::fn fn);
     log& operator << (rem::action a_action);
+    log& operator << (const tux::string::list& _list );
     log& operator << (log::oef e);
     template<typename T> log& operator << (const T& v)
     {

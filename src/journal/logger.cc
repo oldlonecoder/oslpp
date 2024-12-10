@@ -374,6 +374,14 @@ log &log::operator<<(rem::action a_action)
 }
 
 
+log& log::operator<<(const tux::string::list& _list)
+{
+    text |  tux::string::make_str(_list);
+    //...
+    return *this;
+}
+
+
 log& log::operator<<(log::oef e)
 {
     log::current_section->contents.back() << color::reset << rem::action::commit;

@@ -20,12 +20,12 @@
 
 #pragma once
 
-#include <lus++/definitions.implementation.h>
+//#include <osl++/rem.h>
 #include <any>
 #include <optional>
-#include <lus++/tools/logger.h>
+#include <osl++/journal/logger.h>
 
-namespace lus
+namespace tux
 {
 /*!
  * @brief Trying to implement my own very specific expect return value class using std::any and std::optional.
@@ -33,7 +33,7 @@ namespace lus
  * @author Serge Lussier (serge.lussier@oldlonecoder.club)
  *
  */
-template <typename T> class expect
+template <typename T=rem::code> class expect
 {
     std::any _expected_{};
     rem::type _error_{rem::type::none};
@@ -44,6 +44,7 @@ public:
     expect(const expect<T> &other) : _expected_(other._expected_) {}
     expect(expect<T> &other) : _expected_(other._expected_) {}
     expect(expect<T> &&other) noexcept : _expected_(other._expected_) {}
+    expect(T va) : _expected_(va){}
     expect(log& unexpected)
     {
         _expected_ = unexpected;

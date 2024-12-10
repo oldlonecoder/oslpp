@@ -12,7 +12,7 @@ SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 message("Current SourceDir:" ${CMAKE_CURRENT_SOURCE_DIR})
 
 
-add_library("${Target}" STATIC
+add_library("${Target}++" STATIC
 
             #-----------TOOLS:
             include/${Target}++/_start_.h       src/rem.cc 
@@ -58,14 +58,14 @@ add_library("${Target}" STATIC
 )
 
 
-target_include_directories(${Target} PUBLIC
+target_include_directories("${Target}++" PUBLIC
                            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
                            $<INSTALL_INTERFACE:include>
 )
 
-target_compile_definitions(${Target} PUBLIC "${Target}_DEBUG=$<CONFIG:Debug>")
+target_compile_definitions("${Target}++" PUBLIC "${Target}++_DEBUG=$<CONFIG:Debug>")
 include(GenerateExportHeader)
-generate_export_header(${Target} EXPORT_FILE_NAME ${Target}_export)
+generate_export_header("${Target}++" EXPORT_FILE_NAME "${Target}++_export")
 
 IF (EXISTS "${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json")
     EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E copy_if_different
@@ -74,7 +74,7 @@ IF (EXISTS "${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json")
 ENDIF ()
 
 
-target_link_libraries(${Target} ${CMAKE_DL_LIBS} ) # and other system dependencies...
+target_link_libraries("${Target}++" ${CMAKE_DL_LIBS} ) # and other system dependencies...
 
 
 # add_executable(lus++.app
@@ -84,8 +84,8 @@ target_link_libraries(${Target} ${CMAKE_DL_LIBS} ) # and other system dependenci
 # target_link_libraries(lus++.app lus)
 
 
-install(TARGETS ${Target}
-        EXPORT ${Target}
+install(TARGETS "${Target}++"
+        EXPORT "${Target}++"
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
@@ -98,6 +98,7 @@ install(DIRECTORY
         DESTINATION "${CMAKE_INSTALL_PREFIX}/include"
 )
 
+add_subdirectory(diagnostic)
 
 #add_custom_target("uninstall" COMMENT "Uninstall installed files")
 #add_custom_command(
