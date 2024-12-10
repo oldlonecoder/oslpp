@@ -66,66 +66,11 @@ private:
     std::source_location location{};
     // ---------------------------------
     tux::string  text{};
-/*
-    *        integers::U8 type  : 1;
-             integers::U8 stamp : 1;
-             integers::U8 fun  : 1;
-             integers::U8 file  : 1;
-             integers::U8 line  : 1;
-             integers::U8 col   : 1;
- */
+
     header_component _headercomp_{1,0,1,1,1,1};
 public:
 
-    // struct OSL_API logentry
-    // {
-    //     tux::string _text_{};
-    //     using logs = std::vector<log::logentry>;
-    //     explicit logentry(log::type, std::source_location src = std::source_location::current()){};
-    //     logentry();
-    //     ~logentry() { _text_.clear(); }
-    //
-    //     log::logentry& error       (std::source_location src = std::source_location::current());
-    //     log::logentry& warning     (std::source_location src = std::source_location::current());
-    //     log::logentry& fatal       (std::source_location src = std::source_location::current());
-    //     log::logentry& except      (std::source_location src = std::source_location::current());
-    //     log::logentry& message     (std::source_location src = std::source_location::current());
-    //     log::logentry& write         (std::source_location src = std::source_location::current());
-    //     log::logentry& debug       (std::source_location src = std::source_location::current());
-    //     log::logentry& info        (std::source_location src = std::source_location::current());
-    //     log::logentry& comment     (std::source_location src = std::source_location::current());
-    //     log::logentry& syntax      (std::source_location src = std::source_location::current());
-    //     log::logentry& status      (std::source_location src = std::source_location::current());
-    //     log::logentry& test        (std::source_location src = std::source_location::current());
-    //     log::logentry& interrupted (std::source_location src = std::source_location::current());
-    //     log::logentry& aborted     (std::source_location src = std::source_location::current());
-    //     log::logentry& segfault    (std::source_location src = std::source_location::current());
-    //     log::logentry& jnl         (std::source_location src = std::source_location::current());
-    //
-    //     log::logentry& operator << (const std::string& txt);
-    //     log::logentry& operator << (const char* txt);
-    //     log::logentry& operator << (char ch);
-    //     log::logentry& operator << (std::string_view txt);
-    //     log::logentry& operator << (const rectangle& r);
-    //     log::logentry& operator << (cxy pt);
-    //     log::logentry& operator << (color::code col);
-    //     log::logentry& operator << (color::pair fgbg);
-    //     log::logentry& operator << (glyph::type gh);
-    //     log::logentry& operator << (accent_fr::type ac);
-    //     log::logentry& operator << (log::type ty);
-    //     log::logentry& operator << (log::code cod);
-    //     log::logentry& operator << (log::fn fn);
-    //     log::logentry& operator << (log::action a_action);
-    //     //log::logentry& operator << (tux::object*);
-    //
-    //     template<typename T> log::logentry& operator << (const T& v)
-    //     {
-    //         _text_ << v;
-    //         return *this;
-    //     }
-    //     //...
-    //
-    // };
+
     enum oef : integers::u8 { eol };
     static log& error       (std::source_location src = std::source_location::current());
     static log& warning     (std::source_location src = std::source_location::current());

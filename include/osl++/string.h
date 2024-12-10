@@ -20,8 +20,7 @@
 
 
 #pragma once
-#include <osl++/colors.h>
-#include <osl++/glyphes.h>
+#include <osl++/rem.h>
 #include <osl++/cadres.h>
 #include <iostream>
 #include <cstring>

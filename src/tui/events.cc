@@ -94,9 +94,8 @@ Because OpenBSD does not implement STREAMS, there is no distinction between some
 
 
 
-#include "osl++/tui/events.h"
-#include <sys/select.h>
-#include <sys/ioctl.h>
+#include <osl++/tui/events.h>
+
 
 char buffer[1024];
 

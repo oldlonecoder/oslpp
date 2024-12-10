@@ -149,10 +149,9 @@ struct OSL_API key_event
 
     };
     U64 code{0}; ///< enough room for each BYTE ex [SHIFT+F5] bytes sequence: 0x1b,0x5b,0x31,0x35,0x3b,0x32,0x7e
-                 ///< is compressed into 0x00005B31353B327E => 1b can be removed knowing it is a (ctrl)sequence.
+                 ///< is compressed into 0x00005B31353B327E.
                  ///< ...But we need to compact the bytes sequence into a u64 each time.
-                 ///< so it needs to be verified if U64==U64 vs str comp is that faster so we can switch
-                 ///< And maybe even enough to include data from incoming(as of sept 11,2024) support to mouse events.
+
     std::string_view description;
     char ansi_seq[20]; // Null-terminated chars array - We keep storing the raw sequence in string of bytes
     key_event::enums  mnemonic{enums::None};
@@ -201,7 +200,7 @@ struct OSL_API mouse
 
 
     struct
-    {   // -- buttons: 0 = release; 1 = pressed - no matter revious and motion states
+    {   // -- buttons: 0 = release; 1 = pressed - no matter previous and motion states
         u8 left   :1;
         u8 middle :1;
         u8 right  :1;

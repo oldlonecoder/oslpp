@@ -463,9 +463,6 @@ struct OSL_API accent_fr
 
 namespace rem
 {
-    std::pair<tux::glyph::type, tux::ui::color::pair> type_attributes(rem::type ty);
-    std::pair<tux::glyph::type, tux::ui::color::pair> return_code_attributes(rem::code cod);
-    std::pair<tux::glyph::type, tux::ui::color::pair> function_attributes(rem::fn fn);
-    std::pair<tux::glyph::type, tux::ui::color::pair> action_attributes(rem::action a);
+
 
 }
