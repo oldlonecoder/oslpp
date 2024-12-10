@@ -36,7 +36,7 @@ diagnostic::diagnostic(const std::string& _name, tux::string::list _args): _args
 
 expect<> diagnostic::run()
 {
-    log::debug() << "Running diagnostic for " << _args_ << log::eol;
+    log::debug() << pretty_id() << " : Running diagnostic for " << _args_ << log::eol;
     return rem::code::notimplemented;
 }
 

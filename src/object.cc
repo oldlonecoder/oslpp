@@ -31,10 +31,14 @@ object::object(object *ParentObj, const std::string &ObjID):
 
 object::~object()
 {
-    log::debug() << pretty_id() << ":" << log::eol;
+
+    if (m_children.empty())
+        log::debug() << pretty_id() << " has no children objects. Skipping recursive loop." << log::eol;
+    else
+        log::debug() << pretty_id() << " destroying " << m_children.size() << " children object(s). :" << log::eol;
     for(auto* o : m_children)
     {
-        //log::info() << log::fn::func << " destroy ['" << std::format("{:^20s}", o->id()) << "'] @" << o;
+        log::info() << " destroy ['" << std::format("{:^20s}", o->pretty_id()) << "'] @" << o <<log::eol;
         delete o;
     }
     m_children.clear();
