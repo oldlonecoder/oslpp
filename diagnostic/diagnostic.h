@@ -35,12 +35,11 @@ class OSL_API diagnostic : public object
     tux::string::list _args_{};
 public:
 
-    using list = std::vector<diagnostic>;
 
 
     diagnostic()=default;
-    explicit diagnostic(const std::string& _name);
-    explicit diagnostic(const std::string& _name, tux::string::list _args);
+    explicit diagnostic(object* _parent,const std::string& _name);
+    explicit diagnostic(object* _parent,const std::string& _name, tux::string::list _args);
     ~diagnostic() override = default;
     //...
 
@@ -59,9 +58,9 @@ class OSL_API diagnostics : public object
 public:
     diagnostics()=default;
     ~diagnostics() override = default;
-    diagnostics(const std::string& _name);
+    explicit diagnostics(const std::string& _name);
 
-
+    rem::code run();
 
 };
 

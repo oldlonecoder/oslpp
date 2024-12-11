@@ -28,10 +28,10 @@
 namespace tux
 {
 
-diagnostic::diagnostic(const std::string& _name):object(nullptr, _name){}
+diagnostic::diagnostic(object* _parent, const std::string& _name):object(_parent, _name){}
 
 
-diagnostic::diagnostic(const std::string& _name, tux::string::list _args): _args_(std::move(_args)), object(nullptr, _name){}
+diagnostic::diagnostic(object* _parent, const std::string& _name, tux::string::list _args): _args_(std::move(_args)), object(_parent, _name){}
 
 
 expect<> diagnostic::run()
@@ -51,6 +51,14 @@ expect<> diagnostic::run()
 diagnostics::diagnostics(const std::string& _name):object(nullptr, _name){}
 
 
+rem::code diagnostics::run()
+{
+    for (auto* o: m_children)
+    {
+        if (auto* d = dynamic_cast<diagnostic*>(o); d != nullptr) d->run();
+    }
+    return rem::code::done;
+}
 
 
 #pragma endregion _DIGANOSTICS_
@@ -62,8 +70,10 @@ diagnostics::diagnostics(const std::string& _name):object(nullptr, _name){}
 auto main(int argc, char** argv) -> int
 {
     tux::log::init(nullptr);
+    tux::diagnostics diagnostics{"diagnostics"};
+    new tux::diagnostic(&diagnostics,"test1", tux::string::make_list(argc, argv,1));
 
-    tux::diagnostic diagnostic("main",tux::string::make_list(argc,argv,1));
-    diagnostic.run();
+
+    diagnostics.run();
     return 0;
 }
