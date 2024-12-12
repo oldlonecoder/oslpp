@@ -16,10 +16,9 @@ application* application::_app_{nullptr};
 
 
 
-application::application(std::string a_id, int argc, char** argv): _app_name_(std::move(a_id))
+
+application::application(std::string app_name, tux::string::view_list _args, tux::string::view_list _env): _app_name_(std::move(app_name))
 {
-    if(argc && argv)
-        _args_ = tux::string::string_view_list(argc,argv);
 
     if(application::_app_ == nullptr)
     {
@@ -27,13 +26,6 @@ application::application(std::string a_id, int argc, char** argv): _app_name_(st
     }
     else
         abort();
-    setup();
-}
-
-
-application::application(std::string app_name, tux::string::view_list _args, tux::string::view_list _env): _app_name_(std::move(app_name))
-{
-    _args_ = std::move(_args);
     setup();
 }
 
@@ -170,7 +162,7 @@ rem::code application::setup()
 {
     //...
     log::init();
-    install_signals();
+    //install_signals();
 
     return rem::code::done;
 }
@@ -218,6 +210,28 @@ rem::action application::std_infile_no(ui::io::descriptor& _d)
     // log::debug() << " screen stuff:" << log::eol;
 
     return rem::action::commit;
+}
+
+
+
+std::string application::pretty_id() const
+{
+    tux::string text;
+
+    auto [gh,colors] = rem::return_code_attributes(rem::code::object_ptr);
+    text
+        | colors()
+        | gh
+        | class_name()
+        | color::reset | "::";
+    auto [gl, cc] = rem::return_code_attributes(rem::code::object_id);
+    text
+        | cc()
+        | gl
+        | _app_name_
+        | color::reset | ' ';
+
+    return text();
 }
 
 

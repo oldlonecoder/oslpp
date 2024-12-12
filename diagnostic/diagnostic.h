@@ -36,6 +36,7 @@ class OSL_API diagnostic : public ui::application
 public:
 
     diagnostic()=default;
+    diagnostic(const std::string& _app_name, int argc, char** argv, int index=1, char** env={});
 
     diagnostic(std::string app_name, tux::string::view_list _args, tux::string::view_list _env);
     ~diagnostic() override = default;

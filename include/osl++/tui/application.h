@@ -54,7 +54,7 @@ class OSL_API application
 public:
     application() = delete;
     virtual ~application();
-    application(std::string app_name, int argc, char **argv);
+    //application(std::string app_name, int argc, char **argv);
     application(std::string app_name, tux::string::view_list _args, tux::string::view_list _env={});
 
     virtual rem::code run() = 0; //{ return rem::code::notimplemented;}
@@ -65,7 +65,7 @@ public:
     static terminal::screen* screen();
 //    static desktop* screen_desktop();
     [[nodiscard]] std::string app_name() const;
-
+    std::string pretty_id() const;
 
 protected:
     rem::code setup();

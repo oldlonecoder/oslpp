@@ -259,12 +259,6 @@ std::string string::make_str(const tux::string::list& _list)
 }
 
 
-string::view_list string::make_list_view(int argc, char** argv)
-{
-    view_list view{};
-    for(int i=0;i<argc;++i) view.emplace_back(argv[i]);
-    return view;
-}
 
 
 std::string string::now(const std::string& str_fmt)
