@@ -20,13 +20,13 @@
 
 #pragma once
 //#include <osl++/rem.h>
-#include <osl++/object.h>
+#include <osl++/tui/application.h>
 #include <osl++/expect.h>
 
 namespace tux
 {
 
-class OSL_API diagnostic : public object
+class OSL_API diagnostic : public ui::application
 {
 
     CLASSNAME(diagnostic)
@@ -35,35 +35,23 @@ class OSL_API diagnostic : public object
     tux::string::list _args_{};
 public:
 
-
-
     diagnostic()=default;
-    explicit diagnostic(object* _parent,const std::string& _name);
-    explicit diagnostic(object* _parent,const std::string& _name, tux::string::list _args);
+
+    diagnostic(std::string app_name, tux::string::view_list _args, tux::string::view_list _env);
     ~diagnostic() override = default;
     //...
 
-    expect<> run();
+    rem::code run() override;
+    rem::code terminate() override;
 
+
+protected:
+
+    rem::code setup_ui() override;
 };
 
 
 
-class OSL_API diagnostics : public object
-{
-
-    CLASSNAME(diagnostics)
-    diagnostic::list _diagnostics_{};
-
-public:
-    diagnostics()=default;
-    ~diagnostics() override = default;
-    explicit diagnostics(const std::string& _name);
-
-    rem::code run();
-
-};
-
-} // namespace tux::rem
+} // namespace tux
 
 //#endif //DIAGNOSTIC_H

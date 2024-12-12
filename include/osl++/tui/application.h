@@ -42,7 +42,7 @@ class OSL_API application
     static void sig_crash(int);
     static void sig_winch(int);
 
-    std::vector<std::string_view> _args_{};
+    tux::string::view_list _args_{};
     std::string _app_name_{};
     static application* _app_;
 
@@ -55,7 +55,7 @@ public:
     application() = delete;
     virtual ~application();
     application(std::string app_name, int argc, char **argv);
-    //application(std::string app_name, int argc, char **argv, char** envp);
+    application(std::string app_name, tux::string::view_list _args, tux::string::view_list _env={});
 
     virtual rem::code run() = 0; //{ return rem::code::notimplemented;}
     virtual rem::code terminate();

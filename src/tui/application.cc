@@ -16,7 +16,7 @@ application* application::_app_{nullptr};
 
 
 
-application::application(std::string  a_id, int argc, char** argv): _app_name_(std::move(a_id))
+application::application(std::string a_id, int argc, char** argv): _app_name_(std::move(a_id))
 {
     if(argc && argv)
         _args_ = tux::string::string_view_list(argc,argv);
@@ -27,6 +27,13 @@ application::application(std::string  a_id, int argc, char** argv): _app_name_(s
     }
     else
         abort();
+    setup();
+}
+
+
+application::application(std::string app_name, tux::string::view_list _args, tux::string::view_list _env): _app_name_(std::move(app_name))
+{
+    _args_ = std::move(_args);
     setup();
 }
 
@@ -164,8 +171,6 @@ rem::code application::setup()
     //...
     log::init();
     install_signals();
-    terminal::begin();
-
 
     return rem::code::done;
 }
@@ -173,6 +178,7 @@ rem::code application::setup()
 
 rem::code application::setup_ui()
 {
+    terminal::begin();
     _terminal_screen_ = new terminal::screen("{terminal screen}");
     _terminal_screen_->setup();
     //...

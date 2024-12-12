@@ -28,17 +28,16 @@
 namespace tux
 {
 
-diagnostic::diagnostic(object* _parent, const std::string& _name):object(_parent, _name){}
+
+diagnostic::diagnostic(std::string app_name, tux::string::view_list _args, tux::string::view_list _env):application(std::move(app_name),std::move(_args), std::move(_env)){}
 
 
-diagnostic::diagnostic(object* _parent, const std::string& _name, tux::string::list _args): _args_(std::move(_args)), object(_parent, _name){}
-
-
-expect<> diagnostic::run()
+rem::code diagnostic::run()
 {
     log::debug() << pretty_id() << " : Running diagnostic for " << _args_ << log::eol;
     return rem::code::notimplemented;
 }
+
 
 // diagnostic::~diagnostic()
 // {
@@ -47,21 +46,6 @@ expect<> diagnostic::run()
 
 
 
-#pragma region _DIGANOSTICS_
-diagnostics::diagnostics(const std::string& _name):object(nullptr, _name){}
-
-
-rem::code diagnostics::run()
-{
-    for (auto* o: m_children)
-    {
-        if (auto* d = dynamic_cast<diagnostic*>(o); d != nullptr) d->run();
-    }
-    return rem::code::done;
-}
-
-
-#pragma endregion _DIGANOSTICS_
 
 
 } // namespace tux::rem

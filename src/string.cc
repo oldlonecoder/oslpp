@@ -259,6 +259,14 @@ std::string string::make_str(const tux::string::list& _list)
 }
 
 
+string::view_list string::make_list_view(int argc, char** argv)
+{
+    view_list view{};
+    for(int i=0;i<argc;++i) view.emplace_back(argv[i]);
+    return view;
+}
+
+
 std::string string::now(const std::string& str_fmt)
 {
     // Old archaic Code...
@@ -309,10 +317,10 @@ std::string string::bytes(std::vector<int> a_seq)
 
 
 
-std::vector<std::string_view> string::string_view_list(int Count, char** s)
+std::vector<std::string_view> string::string_view_list(int Count, char** s, int offset)
 {
     std::vector<std::string_view> result;
-    for(int i = 0; i < Count; ++i) result.push_back({s[i]});
+    for(int i = offset; i < Count; ++i) result.emplace_back(s[i]);
     return result;
 }
 

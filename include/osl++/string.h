@@ -51,6 +51,8 @@ class OSL_API string final
 public:
 
     using list = std::vector<std::string>;
+    using view_list = std::vector<std::string_view>;
+
 
 
     string() = default;
@@ -198,7 +200,7 @@ public:
     static std::string bytes(std::string_view a_seq);
     static std::string bytes(std::vector<int> a_seq);
 
-    static std::vector<std::string_view> string_view_list(int Count, char **s);
+    static std::vector<std::string_view> string_view_list(int Count, char **s, int offset=0);
     static tux::string::list make_list(int argc, char** argv, int offset=0);
 };
 
