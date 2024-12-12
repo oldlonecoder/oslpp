@@ -42,6 +42,7 @@ add_library("${Target}++" STATIC
             include/${Target}++/tui/terminal.h src/tui/terminal.cc
             include/${Target}++/tui/vchar.h src/tui/terminal.vchar.cc
             include/${Target}++/tui/events.h src/tui/events.cc
+            include/${Target}++/tui/widgets/threads_pool.h src/tui/widgets/threads_pool.cc
             include/${Target}++/tui/application.h src/tui/application.cc
             include/${Target}++/tui/widget.h src/tui/widget.cc src/tui/widget_painter.cc
             include/${Target}++/tui/widgets/label.h src/tui/widgets/label.cc
