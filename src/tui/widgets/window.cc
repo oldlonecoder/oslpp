@@ -1,19 +1,17 @@
-/***************************************************************************
- *   Copyright (C) 1965/1987/2023 by Serge Lussier                         *
- *   serge.lussier@oldlonecoder.club                                       *
- *                                                                         *
- *                                                                         *
- *   Unless otherwise specified, all Code in this project is written       *
- *   by the author (Serge Lussier)                                         *
- *   and no one else then not even {copilot, chatgpt, or any other AI}     *
- *   --------------------------------------------------------------------- *
- *   Copyrights from authors other than Serge Lussier also apply here      *
- ***************************************************************************/
+/******************************************************************************************
+ *   Copyright (C) ...,2025,... by Serge Lussier                                          *
+ *   serge.lussier@oldlonecoder.club / lussier.serge@gmail.com                            *
+ *   ----------------------------------------------------------------------------------   *
+ *   Unless otherwise specified, all Codes ands files in this project is written          *
+ *   by the author and owned by the auther (Serge Lussier), unless otherwise specified.   *
+ *   ----------------------------------------------------------------------------------   *
+ *   Copyrights from authors other than Serge Lussier also apply here.                    *
+ *   Open source FREE licences also apply To the Code from the author (Serge Lussier)     *
+ *   ----------------------------------------------------------------------------------   *
+ *   Usual GNU FREE GPL-1,2, MIT... or whatever -  apply to this project.                 *
+ ******************************************************************************************/
 
-
-//#include <tuxtui/ui/widgets/window.h>
 #include <osl++/tui/widgets/screen.h>
-
 #include "osl++/tui/application.h"
 
 namespace tux::ui

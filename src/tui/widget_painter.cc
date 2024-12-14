@@ -74,13 +74,7 @@ widget::painter_dc &widget::painter_dc::clear(const rectangle &r)
     {
         at(ui::cxy{0,y});
 
-        std::fill(_iterator_, _iterator_ + area.dwh.w, terminal::vchar(_colors_));
-         // log::write() << "check(first char on line #"
-         //             << color::yellow
-         //             << y<< color::reset << ":"
-         //             << color::lime << _widget_->class_name()
-         //             << color::yellow << "::" << color::lightsteelblue3 << _widget_->id() << color::reset
-         //             << _iterator_->details();
+        std::fill_n(_iterator_, area.dwh.w, terminal::vchar(_colors_));
     }
     return home();
 
