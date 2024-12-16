@@ -25,8 +25,6 @@
 #include <condition_variable>
 #include <mutex>
 #include <thread>
-#include <utility>
-#include <functional>
 #include <vector>
 #include <osl++/tui/events.h>
 namespace tux::ui
@@ -48,7 +46,7 @@ public:
     rem::code pause();
     rem::code resume();
     rem::code join();
-
+    void operator()(){};
 private:
     using list = std::vector<ui_worker>;
     //...
@@ -63,21 +61,32 @@ private:
 class OSL_API threads_pool
 {
 
+    using threads_list = std::vector<std::thread>;
+
 public:
-    threads_pool();
+    explicit threads_pool(size_t num_threads = std::thread::hardware_concurrency());
+    threads_pool(threads_pool const&) = delete;
+    threads_pool& operator=(threads_pool const&) = delete;
+
+    threads_pool(threads_pool&&) noexcept = delete;
+    threads_pool& operator=(threads_pool&&) noexcept = delete;
+
     ~threads_pool();
     void start();
     void pause();
     void stop();
     void terminate();
+    rem::code enqueue(event& ev);
 private:
     ui_worker::list _workers_{};
-    std::mutex mutex;
+    threads_list _threads_{};
+    std::mutex q_mutex;
     std::condition_variable condition;
     bool stopped = false;
     bool paused = false;
     bool terminating = false;
     size_t _num_threads = std::thread::hardware_concurrency();
+
 
 };
 

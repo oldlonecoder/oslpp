@@ -35,7 +35,7 @@
 #include <cstring>
 #include <sys/types.h>
 
-#include <stack>
+//#include <stack>
 //#include <deque>
 
 namespace tux::ui
@@ -259,7 +259,7 @@ struct  OSL_API event
         commandevent    cmdev;
         fileinputevent  fev;
     }data{};
-    
+
     using events_q = std::array<event,20>; //< I want to implement fixed length ( for speed ) circular events Q so std::vector is the one to choose over std::deque; std::dq; std::stack
 
     static constexpr u64 noevent                = 0x0000000000000000;
@@ -312,7 +312,7 @@ public:
     ~events_stream();
 
     event& push();
-    rem::code read(event& _event);
+    rem::code get(event& _event);
     event& operator*() const {return *_head_;}
 
 };

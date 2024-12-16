@@ -22,20 +22,62 @@
 
 namespace tux::ui
 {
+
+#pragma region workers
+
 ui_worker::ui_worker()
 {
     //...stop here - have to go to work...:(
+    _id_ = std::thread::id();
 }
 
 
-threads_pool::threads_pool() = default;
+rem::code ui_worker::start()
+{
+    return rem::code::notimplemented;
+}
+
+#pragma endregion workers
+
+// --------------------------------------------------------------------------------------------------------------------
+
+#pragma region threads_pool
+
+threads_pool::threads_pool(size_t num_threads): _num_threads(num_threads){}
+
+
+threads_pool::~threads_pool()
+{
+    for (auto& w: _workers_) w.join();
+    _workers_.clear();
+}
 
 
 void threads_pool::start()
 {
-    for (auto n = 0; n< _num_threads; ++n)
+    for (auto n = 0; n < _num_threads; ++n)
     {
         _workers_.emplace_back();
+        _threads_.emplace_back(ui_worker());
     }
 }
+
+
+rem::code threads_pool::enqueue(event& ev)
+{
+    {
+        std::unique_lock<std::mutex> lock(q_mutex);
+    }
+    return rem::code::notimplemented;
+
+}
+
+
+#pragma endregion threads_pool
+
+
+
+
+
+
 } // namespace tux::ui

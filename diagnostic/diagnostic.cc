@@ -29,19 +29,21 @@ namespace tux
 {
 
 
-diagnostic::diagnostic(std::string app_name, tux::string::view_list _args, tux::string::view_list _env):ui::application(std::move(app_name),std::move(_args), std::move(_env)){}
+diagnostic::diagnostic(std::string app_name, tux::string::view_list _args/*, tux::string::view_list _env*/):ui::application(std::move(app_name),std::move(_args)/*, std::move(_env)*/){}
 diagnostic::diagnostic(const std::string& _app_name, int argc, char** argv, int index, char** env): ui::application(_app_name, tux::string::string_view_list(argc,argv,index)){}
 
 
 rem::code diagnostic::run()
 {
     log::debug() << pretty_id() << " : Running diagnostic for " << _args_ << log::eol;
-    return rem::code::notimplemented;
+    return ui::application::run();
+    //return rem::code::notimplemented;
 }
 
 
 rem::code diagnostic::terminate()
 {
+    log::debug() << " nothing to do here. Calling base application::terminate():" << log::eol;
     return application::terminate();
 }
 
@@ -67,9 +69,7 @@ rem::code diagnostic::setup_ui()
 auto main(int argc, char** argv) -> int
 {
     //tux::log::init(nullptr);
-    tux::diagnostic diagnostic("lux++ api diagnostic app", argc, argv,1);
+    tux::diagnostic diagnostic("lux++ api diagnostic app", tux::string::string_view_list(argc,argv,1));
 
-    diagnostic.run();
-    tux::log::end();
-    return 0;
+    return static_cast<int>(diagnostic.run());
 }

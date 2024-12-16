@@ -124,6 +124,11 @@ bool descriptor::operator--()
     return _config_.cursor >= _buffer_.begin();
 }
 
+void descriptor::terminate()
+{
+
+}
+
 
 bool descriptor::operator--(int)
 {
@@ -339,6 +344,11 @@ rem::code polling::set_state(polling::state _state)
 {
     _state = _state;
     return rem::code::accepted;
+}
+
+void polling::terminate()
+{
+    _state_ = state::Terminate;
 }
 
 #pragma endregion _polling_

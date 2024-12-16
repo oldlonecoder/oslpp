@@ -27,7 +27,7 @@
 #include <osl++/journal/logger.h>
 #include <poll.h>
 
-namespace tux::ui::io 
+namespace tux::ui::io
 {
 using namespace tux::integers;
 
@@ -90,6 +90,7 @@ public:
     bool operator --(int);
 
     config_data& config(){ return _config_; }
+    void terminate();
     void activate() { _flags_.active = 1; }
     tux::signals::action<tux::ui::io::descriptor&>& pollin_action() { return _in; }
     tux::signals::action<tux::ui::io::descriptor&>& pollout_action() { return _out; }
@@ -141,6 +142,7 @@ public:
     rem::code reset();
     rem::code end();
     rem::code set_state(polling::state _state);
+    void terminate();
 
     descriptor::config_data& new_descriptor();
     rem::code remove_descriptor(int _fd_id);

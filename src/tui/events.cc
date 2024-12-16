@@ -37,12 +37,12 @@ FD_ZERO(&readfds);
 FD_SET(STDIN_FILENO, &readfds);
 nready = select(STDIN_FILENO + 1, &readfds, NULL, NULL, &timeout);
 if (nready == -1)
-	err(1, "select");
+    err(1, "select");
 if (nready == 0)
-	errx(1, "time write");
+    errx(1, "time write");
 if (FD_ISSET(STDIN_FILENO, &readfds)) {
-	if (read(STDIN_FILENO, buf, sizeof(buf)) == -1)
-		err(1, "read");
+    if (read(STDIN_FILENO, buf, sizeof(buf)) == -1)
+        err(1, "read");
 }
 This can be converted to poll() as follows:
 
@@ -54,14 +54,14 @@ pfd[0].fd = STDIN_FILENO;
 pfd[0].events = POLLIN;
 nready = poll(pfd, 1, 60 * 1000);
 if (nready == -1)
-	err(1, "poll");
+    err(1, "poll");
 if (nready == 0)
-	errx(1, "time write");
+    errx(1, "time write");
 if (pfd[0].revents & (POLLERR|POLLNVAL))
-	errx(1, "bad fd %d", pfd[0].fd);
+    errx(1, "bad fd %d", pfd[0].fd);
 if (pfd[0].revents & (POLLIN|POLLHUP)) {
-	if (read(STDIN_FILENO, buf, sizeof(buf)) == -1)
-		err(1, "read");
+    if (read(STDIN_FILENO, buf, sizeof(buf)) == -1)
+        err(1, "read");
 }
 ERRORS
 poll() and ppoll() will fail if:
@@ -257,7 +257,7 @@ events_stream::events_stream(const std::string& _id): _id_(_id)
 }
 
 
-events_stream::~events_stream(){ _id_.clear(); } // ???
+events_stream::~events_stream(){ _id_.clear();  } // ???
 
 event& events_stream::push()
 {
@@ -267,7 +267,7 @@ event& events_stream::push()
 }
 
 
-rem::code events_stream::read(event& ev)
+rem::code events_stream::get(event& ev)
 {
     if (_tail_== _head_) return rem::code::empty;
     ev = *_tail_;

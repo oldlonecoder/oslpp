@@ -29,6 +29,14 @@ application::application(std::string app_name, tux::string::view_list _args, tux
     setup();
 }
 
+rem::code application::run()
+{
+    setup_ui();
+    start_events_listening();
+    terminate();
+    return rem::code::notimplemented;
+}
+
 
 application::~application()
 {
@@ -152,18 +160,16 @@ rem::code application::start_events_listening()
     d->activate();
 
     // Blocking in the calling thread (Formally the main thread).
-    return _polling.run();
+    return _polling.start_polling();
 }
-
-
 
 
 rem::code application::setup()
 {
     //...
     log::init();
-    //install_signals();
-
+    install_signals();
+    //setup_ui();
     return rem::code::done;
 }
 
@@ -180,6 +186,7 @@ rem::code application::setup_ui()
 
 rem::code application::terminate()
 {
+    log::debug() << " Restoring the terminal state, ending the UI, closing the journal logs file." << log::eol;
     terminal::end();
     delete application::_terminal_screen_;
 
@@ -200,7 +207,10 @@ rem::action application::std_infile_no(ui::io::descriptor& _d)
     }
 
     log::debug() << " ansi_parser returned: " << r << log::eol;
-
+    log::debug() << "no threads pool yet - processing event q:" << log::eol;
+    //...
+    _polling.terminate();
+    return rem::action::end;
     // auto& ev = *_events_q;
     // if (ev[ui::event::command_key])
     // {
@@ -208,8 +218,7 @@ rem::action application::std_infile_no(ui::io::descriptor& _d)
     //     if (ev.data.kev.code == ui::key_event::ESC) return rem::action::end;
     // }
     // log::debug() << " screen stuff:" << log::eol;
-
-    return rem::action::commit;
+    // return rem::action::commit;
 }
 
 

@@ -22,7 +22,7 @@
 
 #include <osl++/tui/events.h>
 #include <csignal>
-#include <memory>
+//#include <memory>
 #include <osl++//cadres.h>
 #include <osl++/tui/widgets/screen.h>
 #include <osl++/tui/io/polling.h>
@@ -55,11 +55,10 @@ public:
     application() = delete;
     virtual ~application();
     //application(std::string app_name, int argc, char **argv);
-    application(std::string app_name, tux::string::view_list _args, tux::string::view_list _env={});
+    application(std::string app_name, tux::string::view_list _args={}, tux::string::view_list _env={});
 
-    virtual rem::code run() = 0; //{ return rem::code::notimplemented;}
+    virtual rem::code run(); //{ return rem::code::notimplemented;}
     virtual rem::code terminate();
-
 
     static application& app();
     static terminal::screen* screen();
