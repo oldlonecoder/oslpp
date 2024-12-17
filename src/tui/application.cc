@@ -202,13 +202,20 @@ rem::action application::std_infile_no(ui::io::descriptor& _d)
     auto r = ui::io::ansi_parser{_d}.parse(_events_q.push());
     if (!r)
     {
-        log::error() << " ansi_parser returns" << r << " leaving and returning to our stdin polling iteration..." << log::eol;
+        log::error() << " ansi_parser returns: [" << r << "] leaving and returning to our stdin polling iteration..." << log::eol;
         return rem::action::continu;
     }
 
     log::debug() << " ansi_parser returned: " << r << log::eol;
     log::debug() << "no threads pool yet - processing event q:" << log::eol;
+
+    event ev{};
+    r = _events_q.get(ev);
+    if(r == rem::code::empty) return rem::action::continu;
     //...
+    // Threads pool enqueue
+    //_tp_workers_.enqueue(ev);
+
     _polling.terminate();
     return rem::action::end;
     // auto& ev = *_events_q;

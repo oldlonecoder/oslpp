@@ -20,8 +20,8 @@
 #include <osl++/tui/tuxns.h>
 #include <osl++/tui/terminal.h>
 #include <osl++/tui/vchar.h>
+#include <osl++/tui/events.h>
 #include <list>
-
 namespace tux::ui
 {
 
@@ -60,7 +60,7 @@ public:
     virtual rem::code                 show();
     virtual rem::code                 hide();
 
-
+    virtual rem::code process_event(event& ev);
 
     // --------- State modifiers --------------------------------------------------------
     virtual void activate();

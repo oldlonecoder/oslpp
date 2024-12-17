@@ -583,11 +583,11 @@ rem::code log::end()
 }
 
 
-rem::code log::endl()
-{
-    log::current_section->contents.back() << rem::action::commit;
-    return rem::code::accepted;
-}
+// rem::code log::endl()
+// {
+//     log::current_section->contents.back() << rem::action::commit;
+//     return rem::code::accepted;
+// }
 
 
 log::section &log::section::operator*()

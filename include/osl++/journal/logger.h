@@ -71,7 +71,7 @@ private:
 public:
 
 
-    enum oef : integers::u8 { eol };
+    enum oef : integers::u8 { eol,endl };
     static log& error       (std::source_location src = std::source_location::current());
     static log& warning     (std::source_location src = std::source_location::current());
     static log& fatal       (std::source_location src = std::source_location::current());
@@ -138,7 +138,7 @@ public:
     static rem::code init(std::function<rem::code()> inifn = nullptr);
     static rem::code append_section(const std::string& section_id);
     static rem::code end();
-    static rem::code endl();
+    //static rem::code endl();
 
     class OSL_API exception :  public std::exception
     {

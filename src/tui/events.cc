@@ -269,6 +269,7 @@ event& events_stream::push()
 
 rem::code events_stream::get(event& ev)
 {
+    log::debug() << " events: " << std::abs(_head_ - _tail_) << " in q." << log::endl;
     if (_tail_== _head_) return rem::code::empty;
     ev = *_tail_;
     ++_tail_;
@@ -276,6 +277,33 @@ rem::code events_stream::get(event& ev)
         _tail_ = _events_q.begin();
 
     return rem::code::accepted;
+}
+
+std::string mouse::to_string()
+{
+    tux::string text{};
+    tux::string dir{};
+    if(dxy.x < 0) dir | glyph::arrow_left;
+    else if(dxy.x > 0) dir | glyph::data[glyph::arrowright];
+    else if(dxy.y < 0) dir | glyph::data[glyph::arrow_up];
+    else if(dxy.y > 0) dir | glyph::data[glyph::arrow_down];
+    else
+        dir | glyph::data[glyph::big_dot];
+
+    text | "["
+                                 | color::orangered1 | std::format("{:>3d}", xy.x)
+                                 | color::reset | ','
+                                 | color::orangered1 | std::format("{:<3d}",xy.y)
+                                 | color::reset | "]"
+                                 | (button.left   ? color::orangered1 : color::reset)  | (button.left    ?'L' : 'l') | color::reset | "|"
+                                 | (button.middle ? color::lime : color::reset)   | (button.middle  ?'M' : 'm') | color::reset | "|"
+                                 | (button.right  ? color::red4 : color::reset)   | (button.right   ?'R' : 'r') | color::reset | "|"
+                                 | (move          ? color::yellow : color::reset) | dir()
+                                 | color::reset | "["
+                                 | color::orangered1 | std::format("{:>3d}",dxy.x)
+                                 | color::reset | ','
+                                 | color::orangered1 | std::format("{:<3d}",dxy.y) | color::reset | "]";
+    return text();
 }
 
 

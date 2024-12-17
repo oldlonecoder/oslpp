@@ -1,6 +1,6 @@
 #include <osl++/tui/io/ansi_parser.h>
 
-#include "osl++/tui/terminal.h"
+#include <osl++/tui/terminal.h>
 
 
 
@@ -118,7 +118,7 @@ rem::code ansi_parser::parse_csi(event& ev)
 {
     if (!next_byte()) return rem::code::eof;
 
-    //log::debug() << log::fn::fun;
+    log::debug() << log::eol;
 
     bool altered = false;
     int argument = 0;
@@ -159,7 +159,7 @@ rem::code ansi_parser::parse_csi(event& ev)
             arguments.push_back(argument);
             argument = 0;  // NOLINT
             int c=1;
-            //for(auto n : arguments) log::write() << c++ << " > " << std::format("0x{:02x}",n);
+            for(auto n : arguments) log::write() << c++ << " > " << std::format("0x{:02x}",n);
             switch (*cursor) {
                 case 'M':
                     return parse_mouse(ev,std::move(arguments));
@@ -181,6 +181,7 @@ rem::code ansi_parser::parse_csi(event& ev)
 rem::code ansi_parser::parse_mouse(event& ev, std::vector<int>&& args)
 {
     // pressed 'flag' ignored. Relying on the XTerm Button and meta state byte which reports buttons on the lasts two bits:
+    log::debug() << log::endl;
 
     if (args.size() != 3) return rem::code::eof; //parse_ss_1_2(evnt);
     ev.event_type = event::type::MOUSE;
@@ -204,6 +205,7 @@ rem::code ansi_parser::parse_mouse(event& ev, std::vector<int>&& args)
     event::mouse_data.dxy = {event::mouse_data.xy.x-event::mouse_data.oldxy.x, event::mouse_data.xy.y-event::mouse_data.oldxy.y};
     event::mouse_data.oldxy = event::mouse_data.xy;
     ev.data.mev = event::mouse_data; ///< copy mouse state to the event data.
+    log::info() << "Mouse data:" << ev.data.mev.to_string() << log::endl;
     return rem::code::ready;
 }
 

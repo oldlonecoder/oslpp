@@ -218,11 +218,16 @@ rem::code widget::hide()
     return rem::code::ok;
 }
 
+rem::code widget::process_event(event &ev)
+{
+    return rem::code::notimplemented;
+}
+
 
 
 
 /*!
- * 
+ *
  * @return true if _state_ has the visible bit set
  */
 bool widget::is_visible()
@@ -265,7 +270,7 @@ void widget::set_focus()
 
 
 /*!
- * 
+ *
  * @return true if _state_ has the Focus bit set
  */
 bool widget::is_focus() const
